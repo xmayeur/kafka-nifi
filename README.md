@@ -1,7 +1,7 @@
 # NIFI & KAFKA Sandbox setup
 
 This repository contains a docker-containerized sandbox environment 
-to setup a Kafka broker & Nifi or Python Faust streaming environment
+to setup a Kafka broker with Nifi and Python Faust streaming examples
 
 - Confluent Kafka Broker & Schema registry setup
 
