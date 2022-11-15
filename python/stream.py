@@ -109,7 +109,7 @@ if sandbox == '0.0':
     @app.timer(interval=1.0)
     async def send_names(message):
         await name.send(
-            topic.send(value=Names(first=names.get_first_name(), last=names.get_last_name()
+            topic.send(value=Names(first=names.get_first_name(), last=names.get_last_name())
                       )
 
 if __name__ == '__main__':
