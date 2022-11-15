@@ -3,7 +3,6 @@ import json
 import faust
 import fastavro
 from confluent_schema_registry_client import SchemaRegistryClient
-from graphqry import Graphdb
 import oyaml
 from os.path import join
 from ast import literal_eval
@@ -25,16 +24,6 @@ sandbox = config['default']['sandbox']
 registry = config[mode]['schema_registry']
 # connect to kafka registry
 c = SchemaRegistryClient(registry)
-
-# Connect to Neo4j instance & clean the database
-
-if dburl != '':
-    try:
-        db = Graphdb(f"bolt://{dburl}", auth=(dbuser, dbpwd))
-    except Exception as e:
-        print(f'Cannot open Neo4j DB - error {e}')
-        exit(-1)
-# db.clean()
 
 
 class AvroSchemaDecoder(faust.Schema):
@@ -108,77 +97,6 @@ if sandbox == '0.0':
     async def msg2(events2):
         async for event2 in events2:
             print('OUTPUT: ', event2)
-
-elif sandbox == '1.0':
-    topics = (
-        'GEPCmCiAgreementEvent',
-        'GEPCmCiInterfaceEvent',
-        'GEPCmCiItProductEvent',
-        'GEPCmCiItServiceEvent',
-        'GEPCmCiRelationshipEvent',
-        'GEPCmCiResourceEvent',
-        'GEPCmCiTeamAssignmentEvent',
-        'GEPCmCiTeamEvent',
-    )
-    
-    cmtopic = app.topic(
-        *topics,
-        # pattern='.*',
-        value_type=bytes,
-        key_type=str,
-        schema=AvroSchemaDecoder(),
-    )
-
-
-    @app.agent(cmtopic)
-    async def msg(events):
-        async for event in events:
-            print(event)
-            if dburl != '':
-                if event['body']['type'] == 'entity':
-                    db.node(event['body'])
-                elif event['body']['type'] == 'relation':
-                    db.edge(event['body'])
-
-elif sandbox == '2.0':
-    cmtopic = app.topic(
-        'cmCiDerivedEvent',
-        value_type=bytes,
-        key_type=str,
-        schema=AvroSchemaDecoder(),
-    )
-
-    @app.agent(cmtopic)
-    async def msg(events):
-        async for event in events:
-            print(f'Derived: {event}')
-            if 'saveoutput' in config['default']:
-                save_to_file(event, 'cmCiDerivedEvent')
-            if dburl != '':
-                for sub in event:
-                    if sub != 'GEPEventAVROSchemaHeader' and event[sub] is not None:
-                        if event[sub]['type'] == 'entity':
-                            db.node(event[sub])
-                        elif event[sub]['type'] == 'relation':
-                                db.edge(event[sub])
-
-
-if 'forward_input' in config['default']:
-    if config['default']['forward_input']:
-        topics = literal_eval(config['stream']['topics'])
-        cmInput = app.topic(
-            *topics,
-            value_type=bytes,
-            key_type=str,
-            schema=AvroSchemaDecoder(),
-        )
-
-
-        @app.agent(cmInput)
-        async def msg2(events):
-            async for event in events:
-                print(f'Input: {event}')
-
 
 if __name__ == '__main__':
     app.main()
