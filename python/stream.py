@@ -2,13 +2,13 @@
 
 import io
 import json
-import faust
-import fastavro
-from confluent_schema_registry_client import SchemaRegistryClient
-import oyaml
 from os.path import join
-from ast import literal_eval
+
+import fastavro
+import faust
 import names
+import oyaml
+from confluent_schema_registry_client import SchemaRegistryClient
 
 
 def save_to_file(_json, _topic):
@@ -20,9 +20,6 @@ def save_to_file(_json, _topic):
 config = oyaml.load(open('config.yaml', 'r'), Loader=oyaml.Loader)
 mode = config['default']['mode']
 broker = config[mode]['broker']
-dburl = config[mode]['db']
-dbuser = config['neo4j']['user']
-dbpwd = config['neo4j']['password']
 sandbox = config['default']['sandbox']
 registry = config[mode]['schema_registry']
 # connect to kafka registry
@@ -79,8 +76,9 @@ app = faust.App(
 if sandbox == '0.0':
     class Names(faust.Record):
         first: str
-        last:str
-    
+        last: str
+
+
     topic = app.topic('testTopic', value_type=Names)
     topics = ('testTopic',)
     input_topic = app.topic(
@@ -89,10 +87,12 @@ if sandbox == '0.0':
         key_type=str,
     )
 
+
     @app.agent(input_topic)
     async def msg(events):
         async for event in events:
             print('INPUT: ', event)
+
 
     topics2 = ('harvestDataTopic',)
     out_topic = app.topic(
@@ -101,16 +101,16 @@ if sandbox == '0.0':
         key_type=str,
     )
 
+
     @app.agent(out_topic)
     async def msg2(events2):
         async for event2 in events2:
             print('OUTPUT: ', event2)
-            
+
+
     @app.timer(interval=1.0)
     async def send_names(message):
-        await name.send(
-            topic.send(value=Names(first=names.get_first_name(), last=names.get_last_name())
-                      )
+        await topic.send(value=json.dumps(dict(first=names.get_first_name(), last=names.get_last_name())))
 
-if __name__ == '__main__':
-    app.main()
+        if __name__ == '__main__':
+            app.main()
