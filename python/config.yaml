@@ -10,54 +10,19 @@ offline:
   registry_url: http://localhost:8081
   db: "" # localhost:11001
 
-dev:
-  schema_registry: sr1-global-tst.ing.net
-  broker: br401-odin-tst.ic.ing.net:9092
-  registry_url: https://sr1-global-tst.ing.net:8443
-  db: "" # localhost:11001
-
-test:
-  schema_registry: kafka-tst-0.europe.intranet
-  broker: kafka-tst-0.europe.intranet:9092
-  registry_url: http://kafka-tst-1.europe.intranet:8081
-  db: localhost:11001
-
 
 event:
-  dir_files: 'C:\Users\XY56RE\PycharmProjects\P03316-DefaultCMCIDerivationProc\poc\testEvents2'
-  dir_schemas: 'C:\Users\XY56RE\PycharmProjects\P03316-DefaultCMCIDerivationProc\avro schemas\com\ing\gep\sources_schemas'
-#  dir_files: '../../incident_test'
-#  dir_schemas: '../../incident_test'
+  topics:
+    - first: xavier
+      last: mayeur
+    - first: sukumar
+      last: daniel
 
-  TADMMevents: "[
-      ('taddmNodeCI2.json', 'TADDM_discovery_node_d.avsc'),
-      ]"
-  events: '[
-    (''aceTeam_Event.json'', ''cmCiTestInputEvent.avsc''),
-    (''aceTeam_Event2.json'', ''cmCiTestInputEvent.avsc''),
-    (''aceTeam_Event3.json'', ''cmCiTestInputEvent.avsc''),
-    (''itpcItProduct_Event3.json'', ''cmCiTestInputEvent.avsc''),
-    (''itpcItProduct_Event4.json'', ''cmCiTestInputEvent.avsc''),
-    (''itpcItProduct_Event.json'', ''cmCiTestInputEvent.avsc''),
-    (''itpcItProduct_Event2.json'', ''cmCiTestInputEvent.avsc''),
-    (''aceTeamAssignment_Event.json'', ''cmCiTestInputEvent.avsc''),
-    (''IPC_Event.json'', ''cmCiTestInputEvent.avsc''),
-    (''IPC_Event2.json'', ''cmCiTestInputEvent.avsc''),
-    (''TADDMIP_Event.json'', ''cmCiTestInputEvent.avsc''),
-    ]'
-  incEvents: '[
-    (''incident_event_v1.json'', ''cmdb2dot0.avsc''),
-    (''incident_event_v2.json'', ''cmdb2dot0.avsc'')
-  ]'
 
 stream:
   topics: ('')
-  # topics: ('TaddmEvent', 'cmCiTestInputEvent')
 
 consumer:
   topics:
     - 'itpcEvent'
 
-neo4j:
-  user: neo4j
-  password: test
