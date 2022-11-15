@@ -22,6 +22,7 @@ mode = config['default']['mode']
 broker = config[mode]['broker']
 sandbox = config['default']['sandbox']
 registry = config[mode]['schema_registry']
+generate_names = config['default']['generate_names']
 # connect to kafka registry
 c = SchemaRegistryClient(registry)
 
@@ -67,17 +68,19 @@ class AvroSchemaDecoder(faust.Schema):
             return json.loads(message.key)
 
 
+class Names(faust.Record):
+    first: str
+    last: str
+
+
 app = faust.App(
-    'cmCi',
+    'testData',
     broker=f'kafka://{broker}',
-    value_serializer='raw',
+    value_serializer='json',
     topic_disable_leader=True,
 )
-if sandbox == '0.0':
-    class Names(faust.Record):
-        first: str
-        last: str
 
+if sandbox == '0.0':
 
     topic = app.topic('testTopic', value_type=Names)
     topics = ('testTopic',)
@@ -86,7 +89,6 @@ if sandbox == '0.0':
         value_type=str,
         key_type=str,
     )
-
 
     @app.agent(input_topic)
     async def msg(events):
@@ -101,16 +103,17 @@ if sandbox == '0.0':
         key_type=str,
     )
 
-
     @app.agent(out_topic)
     async def msg2(events2):
         async for event2 in events2:
             print('OUTPUT: ', event2)
 
+    if generate_names:
+        @app.timer(interval=0.3)
+        async def send_names(message):
+            await topic.send(value=Names(last=names.get_last_name(), first=names.get_first_name()), force=True)
+            await app.maybe_start_client()
 
-    @app.timer(interval=1.0)
-    async def send_names(message):
-        await topic.send(value=json.dumps(dict(first=names.get_first_name(), last=names.get_last_name())))
 
-        if __name__ == '__main__':
-            app.main()
+if __name__ == '__main__':
+    app.main()
