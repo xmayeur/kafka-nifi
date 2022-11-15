@@ -8,6 +8,7 @@ from confluent_schema_registry_client import SchemaRegistryClient
 import oyaml
 from os.path import join
 from ast import literal_eval
+import names
 
 
 def save_to_file(_json, _topic):
@@ -76,6 +77,11 @@ app = faust.App(
     topic_disable_leader=True,
 )
 if sandbox == '0.0':
+    class Names(faust.Record):
+        first: str
+        last:str
+    
+    topic = app.topic('testTopic', value_type=Names)
     topics = ('testTopic',)
     input_topic = app.topic(
         *topics,
@@ -99,6 +105,12 @@ if sandbox == '0.0':
     async def msg2(events2):
         async for event2 in events2:
             print('OUTPUT: ', event2)
+            
+    @app.timer(interval=1.0)
+    async def send_names(message):
+        await name.send(
+            topic.send(value=Names(first=names.get_first_name(), last=names.get_last_name()
+                      )
 
 if __name__ == '__main__':
     app.main()
