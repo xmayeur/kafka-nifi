@@ -17,7 +17,7 @@ to setup a Kafka broker with Nifi and Python Faust streaming examples
 - Zookeeper for global coordination
 
 - Python faust-streaming example to susbscribe to kafka events.
-  This example listens to the two topics mentionned above and displays them on the console
+  This scripts generates random names, listens to the two topics mentionned above and displays their messages to the console
  
 
 
