@@ -1,0 +1,7 @@
+confluent_schema_registry_client
+avro-python3~=1.8.2
+pytest~=3.9.3
+fastavro~=0.22.9
+confluent-kafka
+faust-streaming
+oyaml

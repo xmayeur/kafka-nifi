@@ -1,0 +1,763 @@
+{
+  "header" : {
+    "dataModelVersion" : "3"
+  },
+  "content" : {
+    "flowSnapshot" : {
+      "externalControllerServices" : {
+        "98184e2f-aa85-3998-9460-85f00117807c" : {
+          "identifier" : "98184e2f-aa85-3998-9460-85f00117807c",
+          "name" : "JsonRecordSetWriter"
+        },
+        "d1982a94-00ee-3473-930a-bd3015dd19cf" : {
+          "identifier" : "d1982a94-00ee-3473-930a-bd3015dd19cf",
+          "name" : "JsonTreeReader"
+        }
+      },
+      "flowContents" : {
+        "comments" : "",
+        "componentType" : "PROCESS_GROUP",
+        "connections" : [ {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "6fa0f8de-b8c7-36f7-b50b-ff3156f13588",
+            "name" : "LogMessage",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "6005d8a6-83af-31a4-9300-ecdd7f6ec16d",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "27a98713-9e25-3945-9d80-73fe1de66b22",
+            "name" : "PublishKafkaRecord_1_0",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 1768.0,
+            "y" : 928.0
+          }, {
+            "x" : 1768.0,
+            "y" : 1136.0
+          }, {
+            "x" : 1768.0,
+            "y" : 1360.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "6fa0f8de-b8c7-36f7-b50b-ff3156f13588",
+            "name" : "LogMessage",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "e604c77c-bf0a-3343-a66c-a6f2ff304d59",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "failure" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "27a98713-9e25-3945-9d80-73fe1de66b22",
+            "name" : "PublishKafkaRecord_1_0",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 1504.0,
+            "y" : 808.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "27a98713-9e25-3945-9d80-73fe1de66b22",
+            "name" : "PublishKafkaRecord_1_0",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "112d30ac-d789-39c5-885c-21bbc2411c77",
+          "labelIndex" : 0,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "64f50330-967a-3da7-b5a7-254110beb6cd",
+            "name" : "JoltTransformJSON",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 928.0,
+            "y" : 136.0
+          }, {
+            "x" : 920.0,
+            "y" : 1352.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "6fa0f8de-b8c7-36f7-b50b-ff3156f13588",
+            "name" : "LogMessage",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "a29cf496-0b9d-3ad1-a232-fdd1e473abe7",
+          "labelIndex" : 2,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "parse.failure" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "97ee31ad-77d2-32ae-8cab-8b0d91bcb717",
+            "name" : "ConsumeKafkaRecord_1_0",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 1504.0,
+            "y" : 560.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "64f50330-967a-3da7-b5a7-254110beb6cd",
+            "name" : "JoltTransformJSON",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "ef97c887-19cb-3a3c-a98d-783561c03413",
+          "labelIndex" : 0,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "splits" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "70b5f4fc-3d9c-3c05-917c-d481b7786f73",
+            "name" : "SplitRecord",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 1504.0,
+            "y" : 288.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "70b5f4fc-3d9c-3c05-917c-d481b7786f73",
+            "name" : "SplitRecord",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "32143505-2287-33bf-9339-6fdbf69723df",
+          "labelIndex" : 0,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "b614642a-167f-39a2-a60f-970d86587062",
+            "id" : "97ee31ad-77d2-32ae-8cab-8b0d91bcb717",
+            "name" : "ConsumeKafkaRecord_1_0",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        } ],
+        "controllerServices" : [ ],
+        "defaultBackPressureDataSizeThreshold" : "1 GB",
+        "defaultBackPressureObjectThreshold" : 10000,
+        "defaultFlowFileExpiration" : "0 sec",
+        "flowFileConcurrency" : "UNBOUNDED",
+        "flowFileOutboundPolicy" : "STREAM_WHEN_AVAILABLE",
+        "funnels" : [ ],
+        "identifier" : "b614642a-167f-39a2-a60f-970d86587062",
+        "inputPorts" : [ ],
+        "labels" : [ ],
+        "name" : "Streaming Processor",
+        "outputPorts" : [ ],
+        "position" : {
+          "x" : 320.0,
+          "y" : 0.0
+        },
+        "processGroups" : [ ],
+        "processors" : [ {
+          "autoTerminatedRelationships" : [ "success" ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.14.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "6fa0f8de-b8c7-36f7-b50b-ff3156f13588",
+          "name" : "LogMessage",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1328.0,
+            "y" : 1296.0
+          },
+          "properties" : {
+            "log-level" : "info",
+            "log-prefix" : "EVENT: "
+          },
+          "propertyDescriptors" : {
+            "log-message" : {
+              "displayName" : "Log message",
+              "identifiesControllerService" : false,
+              "name" : "log-message",
+              "sensitive" : false
+            },
+            "log-level" : {
+              "displayName" : "Log Level",
+              "identifiesControllerService" : false,
+              "name" : "log-level",
+              "sensitive" : false
+            },
+            "log-prefix" : {
+              "displayName" : "Log prefix",
+              "identifiesControllerService" : false,
+              "name" : "log-prefix",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.LogMessage",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ "failure" ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.14.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "64f50330-967a-3da7-b5a7-254110beb6cd",
+          "name" : "JoltTransformJSON",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1328.0,
+            "y" : 616.0
+          },
+          "properties" : {
+            "jolt-spec" : "[\n    {\n    \"operation\": \"modify-overwrite-beta\",\n    \"spec\": {\n  \t\t\"last\": \"=toUpper\"\n  \t}\n  \t\n\n  },\n  {\n    \"operation\": \"shift\",\n    \"spec\": {\n       \"last\": \"Last Name\",\n       \"first\": \"First Name\"\n    }\n  }\n]",
+            "jolt-transform" : "jolt-transform-chain",
+            "pretty_print" : "false",
+            "Transform Cache Size" : "1"
+          },
+          "propertyDescriptors" : {
+            "jolt-spec" : {
+              "displayName" : "Jolt Specification",
+              "identifiesControllerService" : false,
+              "name" : "jolt-spec",
+              "sensitive" : false
+            },
+            "jolt-transform" : {
+              "displayName" : "Jolt Transformation DSL",
+              "identifiesControllerService" : false,
+              "name" : "jolt-transform",
+              "sensitive" : false
+            },
+            "jolt-custom-class" : {
+              "displayName" : "Custom Transformation Class Name",
+              "identifiesControllerService" : false,
+              "name" : "jolt-custom-class",
+              "sensitive" : false
+            },
+            "jolt-custom-modules" : {
+              "displayName" : "Custom Module Directory",
+              "identifiesControllerService" : false,
+              "name" : "jolt-custom-modules",
+              "resourceDefinition" : {
+                "cardinality" : "MULTIPLE",
+                "resourceTypes" : [ "FILE", "DIRECTORY" ]
+              },
+              "sensitive" : false
+            },
+            "pretty_print" : {
+              "displayName" : "Pretty Print",
+              "identifiesControllerService" : false,
+              "name" : "pretty_print",
+              "sensitive" : false
+            },
+            "Transform Cache Size" : {
+              "displayName" : "Transform Cache Size",
+              "identifiesControllerService" : false,
+              "name" : "Transform Cache Size",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.JoltTransformJSON",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ "original", "failure" ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.14.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "70b5f4fc-3d9c-3c05-917c-d481b7786f73",
+          "name" : "SplitRecord",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1328.0,
+            "y" : 352.0
+          },
+          "properties" : {
+            "Record Writer" : "98184e2f-aa85-3998-9460-85f00117807c",
+            "Record Reader" : "d1982a94-00ee-3473-930a-bd3015dd19cf",
+            "Records Per Split" : "1"
+          },
+          "propertyDescriptors" : {
+            "Record Writer" : {
+              "displayName" : "Record Writer",
+              "identifiesControllerService" : true,
+              "name" : "Record Writer",
+              "sensitive" : false
+            },
+            "Record Reader" : {
+              "displayName" : "Record Reader",
+              "identifiesControllerService" : true,
+              "name" : "Record Reader",
+              "sensitive" : false
+            },
+            "Records Per Split" : {
+              "displayName" : "Records Per Split",
+              "identifiesControllerService" : false,
+              "name" : "Records Per Split",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.SplitRecord",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-kafka-1-0-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.14.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "97ee31ad-77d2-32ae-8cab-8b0d91bcb717",
+          "name" : "ConsumeKafkaRecord_1_0",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1328.0,
+            "y" : 80.0
+          },
+          "properties" : {
+            "max.poll.records" : "10000",
+            "record-writer" : "98184e2f-aa85-3998-9460-85f00117807c",
+            "group.id" : "testGroup",
+            "bootstrap.servers" : "broker:29092",
+            "topic_type" : "names",
+            "security.protocol" : "PLAINTEXT",
+            "max-uncommit-offset-wait" : "1 secs",
+            "honor-transactions" : "true",
+            "topic" : "testTopic",
+            "record-reader" : "d1982a94-00ee-3473-930a-bd3015dd19cf",
+            "message-header-encoding" : "UTF-8",
+            "auto.offset.reset" : "latest"
+          },
+          "propertyDescriptors" : {
+            "header-name-regex" : {
+              "displayName" : "Headers to Add as Attributes (Regex)",
+              "identifiesControllerService" : false,
+              "name" : "header-name-regex",
+              "sensitive" : false
+            },
+            "max.poll.records" : {
+              "displayName" : "Max Poll Records",
+              "identifiesControllerService" : false,
+              "name" : "max.poll.records",
+              "sensitive" : false
+            },
+            "record-writer" : {
+              "displayName" : "Record Writer",
+              "identifiesControllerService" : true,
+              "name" : "record-writer",
+              "sensitive" : false
+            },
+            "group.id" : {
+              "displayName" : "Group ID",
+              "identifiesControllerService" : false,
+              "name" : "group.id",
+              "sensitive" : false
+            },
+            "bootstrap.servers" : {
+              "displayName" : "Kafka Brokers",
+              "identifiesControllerService" : false,
+              "name" : "bootstrap.servers",
+              "sensitive" : false
+            },
+            "topic_type" : {
+              "displayName" : "Topic Name Format",
+              "identifiesControllerService" : false,
+              "name" : "topic_type",
+              "sensitive" : false
+            },
+            "sasl.kerberos.principal" : {
+              "displayName" : "Kerberos Principal",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.principal",
+              "sensitive" : false
+            },
+            "sasl.kerberos.service.name" : {
+              "displayName" : "Kerberos Service Name",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.service.name",
+              "sensitive" : false
+            },
+            "security.protocol" : {
+              "displayName" : "Security Protocol",
+              "identifiesControllerService" : false,
+              "name" : "security.protocol",
+              "sensitive" : false
+            },
+            "kerberos-credentials-service" : {
+              "displayName" : "Kerberos Credentials Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-credentials-service",
+              "sensitive" : false
+            },
+            "ssl.context.service" : {
+              "displayName" : "SSL Context Service",
+              "identifiesControllerService" : true,
+              "name" : "ssl.context.service",
+              "sensitive" : false
+            },
+            "max-uncommit-offset-wait" : {
+              "displayName" : "Max Uncommitted Time",
+              "identifiesControllerService" : false,
+              "name" : "max-uncommit-offset-wait",
+              "sensitive" : false
+            },
+            "honor-transactions" : {
+              "displayName" : "Honor Transactions",
+              "identifiesControllerService" : false,
+              "name" : "honor-transactions",
+              "sensitive" : false
+            },
+            "sasl.kerberos.keytab" : {
+              "displayName" : "Kerberos Keytab",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.keytab",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "topic" : {
+              "displayName" : "Topic Name(s)",
+              "identifiesControllerService" : false,
+              "name" : "topic",
+              "sensitive" : false
+            },
+            "record-reader" : {
+              "displayName" : "Record Reader",
+              "identifiesControllerService" : true,
+              "name" : "record-reader",
+              "sensitive" : false
+            },
+            "message-header-encoding" : {
+              "displayName" : "Message Header Encoding",
+              "identifiesControllerService" : false,
+              "name" : "message-header-encoding",
+              "sensitive" : false
+            },
+            "auto.offset.reset" : {
+              "displayName" : "Offset Reset",
+              "identifiesControllerService" : false,
+              "name" : "auto.offset.reset",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.kafka.pubsub.ConsumeKafkaRecord_1_0",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ ],
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-kafka-1-0-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.14.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "b614642a-167f-39a2-a60f-970d86587062",
+          "identifier" : "27a98713-9e25-3945-9d80-73fe1de66b22",
+          "name" : "PublishKafkaRecord_1_0",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1328.0,
+            "y" : 864.0
+          },
+          "properties" : {
+            "compression.type" : "none",
+            "ack.wait.time" : "5 secs",
+            "use-transactions" : "false",
+            "record-writer" : "98184e2f-aa85-3998-9460-85f00117807c",
+            "acks" : "0",
+            "bootstrap.servers" : "broker:29092",
+            "security.protocol" : "PLAINTEXT",
+            "max.request.size" : "1 MB",
+            "max.block.ms" : "5 sec",
+            "partitioner.class" : "org.apache.kafka.clients.producer.internals.DefaultPartitioner",
+            "topic" : "harvestDataTopic",
+            "record-reader" : "d1982a94-00ee-3473-930a-bd3015dd19cf",
+            "message-header-encoding" : "UTF-8"
+          },
+          "propertyDescriptors" : {
+            "compression.type" : {
+              "displayName" : "Compression Type",
+              "identifiesControllerService" : false,
+              "name" : "compression.type",
+              "sensitive" : false
+            },
+            "ack.wait.time" : {
+              "displayName" : "Acknowledgment Wait Time",
+              "identifiesControllerService" : false,
+              "name" : "ack.wait.time",
+              "sensitive" : false
+            },
+            "use-transactions" : {
+              "displayName" : "Use Transactions",
+              "identifiesControllerService" : false,
+              "name" : "use-transactions",
+              "sensitive" : false
+            },
+            "attribute-name-regex" : {
+              "displayName" : "Attributes to Send as Headers (Regex)",
+              "identifiesControllerService" : false,
+              "name" : "attribute-name-regex",
+              "sensitive" : false
+            },
+            "record-writer" : {
+              "displayName" : "Record Writer",
+              "identifiesControllerService" : true,
+              "name" : "record-writer",
+              "sensitive" : false
+            },
+            "acks" : {
+              "displayName" : "Delivery Guarantee",
+              "identifiesControllerService" : false,
+              "name" : "acks",
+              "sensitive" : false
+            },
+            "bootstrap.servers" : {
+              "displayName" : "Kafka Brokers",
+              "identifiesControllerService" : false,
+              "name" : "bootstrap.servers",
+              "sensitive" : false
+            },
+            "sasl.kerberos.principal" : {
+              "displayName" : "Kerberos Principal",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.principal",
+              "sensitive" : false
+            },
+            "sasl.kerberos.service.name" : {
+              "displayName" : "Kerberos Service Name",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.service.name",
+              "sensitive" : false
+            },
+            "security.protocol" : {
+              "displayName" : "Security Protocol",
+              "identifiesControllerService" : false,
+              "name" : "security.protocol",
+              "sensitive" : false
+            },
+            "kerberos-credentials-service" : {
+              "displayName" : "Kerberos Credentials Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-credentials-service",
+              "sensitive" : false
+            },
+            "ssl.context.service" : {
+              "displayName" : "SSL Context Service",
+              "identifiesControllerService" : true,
+              "name" : "ssl.context.service",
+              "sensitive" : false
+            },
+            "max.request.size" : {
+              "displayName" : "Max Request Size",
+              "identifiesControllerService" : false,
+              "name" : "max.request.size",
+              "sensitive" : false
+            },
+            "partition" : {
+              "displayName" : "Partition",
+              "identifiesControllerService" : false,
+              "name" : "partition",
+              "sensitive" : false
+            },
+            "message-key-field" : {
+              "displayName" : "Message Key Field",
+              "identifiesControllerService" : false,
+              "name" : "message-key-field",
+              "sensitive" : false
+            },
+            "max.block.ms" : {
+              "displayName" : "Max Metadata Wait Time",
+              "identifiesControllerService" : false,
+              "name" : "max.block.ms",
+              "sensitive" : false
+            },
+            "partitioner.class" : {
+              "displayName" : "Partitioner class",
+              "identifiesControllerService" : false,
+              "name" : "partitioner.class",
+              "sensitive" : false
+            },
+            "sasl.kerberos.keytab" : {
+              "displayName" : "Kerberos Keytab",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.keytab",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "topic" : {
+              "displayName" : "Topic Name",
+              "identifiesControllerService" : false,
+              "name" : "topic",
+              "sensitive" : false
+            },
+            "record-reader" : {
+              "displayName" : "Record Reader",
+              "identifiesControllerService" : true,
+              "name" : "record-reader",
+              "sensitive" : false
+            },
+            "message-header-encoding" : {
+              "displayName" : "Message Header Encoding",
+              "identifiesControllerService" : false,
+              "name" : "message-header-encoding",
+              "sensitive" : false
+            },
+            "transactional-id-prefix" : {
+              "displayName" : "Transactional Id Prefix",
+              "identifiesControllerService" : false,
+              "name" : "transactional-id-prefix",
+              "sensitive" : false
+            }
+          },
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.kafka.pubsub.PublishKafkaRecord_1_0",
+          "yieldDuration" : "1 sec"
+        } ],
+        "remoteProcessGroups" : [ ],
+        "variables" : { }
+      },
+      "flowEncodingVersion" : "1.0",
+      "parameterContexts" : { }
+    }
+  }
+}
