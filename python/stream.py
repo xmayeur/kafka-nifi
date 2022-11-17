@@ -26,10 +26,6 @@ generate_names = config['default']['generate_names']
 # connect to kafka registry
 c = SchemaRegistryClient(registry)
 
-if len(sys.argv) > 0:
-    for arg in sys.argv:
-        if arg == '-i':
-            generate_names = True
 
 class AvroSchemaDecoder(faust.Schema):
     """An extension of Faust Schema class. The class is used by Faust when
