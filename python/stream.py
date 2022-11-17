@@ -83,7 +83,7 @@ app = faust.App(
 if sandbox == '0.0':
 
     topic = app.topic('testTopic', value_type=Names)
-    topics = ('testTopic',)
+    topics = config['stream']['topics']
     input_topic = app.topic(
         *topics,
         value_type=str,

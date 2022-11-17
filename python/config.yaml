@@ -10,7 +10,7 @@ offline:
   registry_url: http://localhost:8081
 
 stream:
-  topics: ('')
+  topics:  ('testTopic', 'namesTopic')
 
 consumer:
   topics:
