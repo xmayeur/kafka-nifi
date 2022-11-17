@@ -1,6 +1,6 @@
 default:
   mode: offline
-  generate_names: True
+  generate_names: False
   sandbox: '0.0'
   compatibility: forward
 
