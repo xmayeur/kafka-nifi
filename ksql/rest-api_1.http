@@ -1,0 +1,68 @@
+###
+# curl -X "POST" "http://localhost:8088/query"
+#     -H "Accept: application/vnd.ksql.v1+json"
+#     -d {}
+POST http://localhost:8088/ksql
+Accept: application/vnd.ksql.v1+json
+Content-Type: application/json
+
+{
+  "ksql": "LIST STREAMS;",
+  "streamsProperties": {}
+}
+
+###
+
+POST http://localhost:8088/ksql
+Accept: application/vnd.ksql.v1+json
+Content-Type: application/vnd.ksql.v1+json
+
+{
+  "ksql": "CREATE STREAM namesTopic (last VARCHAR, first VARCHAR) WITH (KAFKA_TOPIC='testTopic', VALUE_FORMAT='json');",
+  "streamsProperties": {
+    "ksql.streams.auto.offset.reset": "latest"
+     }
+}
+
+###
+
+POST http://localhost:8088/ksql
+Accept: application/vnd.ksql.v1+json
+Content-Type: application/vnd.ksql.v1+json
+
+{
+  "ksql": "create stream namesTopic2 as SELECT last as `last`, first as `first`, last + CHR(32) + first as `fullName` FROM  NAMESTOPIC EMIT CHANGES;",
+  "streamsProperties": {
+    "ksql.streams.auto.offset.reset": "latest"
+  }
+}
+
+<> 2022-11-17T142926.200.json
+
+
+###
+
+POST http://localhost:8088/ksql
+Accept: application/vnd.ksql.v1+json
+Content-Type: application/vnd.ksql.v1+json
+
+{
+  "ksql": "DROP STREAM IF EXISTS NAMESTOPIC2 DELETE TOPIC;",
+  "streamsProperties": {
+    "ksql.streams.auto.offset.reset": "earliest"
+  }
+}
+
+<> 2022-11-17T142916.200.json
+###
+
+POST http://localhost:8088/ksql
+Accept: application/vnd.ksql.v1+json
+Content-Type: application/vnd.ksql.v1+json
+
+{
+  "ksql": "DROP STREAM IF EXISTS NAMESTOPIC DELETE TOPIC;",
+  "streamsProperties": {
+    "ksql.streams.auto.offset.reset": "earliest"
+  }
+}

@@ -10,7 +10,9 @@ offline:
   registry_url: http://localhost:8081
 
 stream:
-  topics:  ('testTopic', 'namesTopic')
+  topics:
+  - 'NAMESTOPIC2'
+  - 'harvestDataTopic'
 
 consumer:
   topics:
